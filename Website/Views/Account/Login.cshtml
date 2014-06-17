@@ -37,13 +37,13 @@
                     </label>
                 </p>
                 <p class="controls">
-                <input class="btn btn-primary" type="submit" value="Log in" />
+                <input id="authenticate-user" class="btn btn-primary" type="submit" value="Log in" />
                 </p>
             </li>
         </ol>
     </fieldset>
     <p>
-        @Html.ActionLink("Register", "Register") if you don't have an account.
+        @Html.ActionLink("Register", "Register", null, new { id = "register-new-user"}) if you don't have an account.
     </p>
 }
 </section>

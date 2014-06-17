@@ -36,7 +36,7 @@
                                 {
                                     @Html.AntiForgeryToken()
                                     <i class=" icon-user"></i>
-                                    @User.Identity.Name
+                                    <span id="current-user">@User.Identity.Name</span>
                                     <input type="submit" value="[logout]" style="display: inline; background:none; border-width:0px; color:blue; text-decoration:underline;" />
                                 }
                             </div>
