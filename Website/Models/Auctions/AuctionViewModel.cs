@@ -99,5 +99,7 @@ namespace Website.Models.Auctions
         {
             get { return EndTime - DateTime.Now; }
         }
+
+        public bool SellerIsCurrentUser { get; set; }
     }
 }
