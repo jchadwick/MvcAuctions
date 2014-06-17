@@ -55,6 +55,7 @@ namespace Website.Controllers
                 return HttpNotFound("Auction not found");
 
             var viewModel = Mapper.DynamicMap<AuctionViewModel>(auction);
+            viewModel.SellerIsCurrentUser = User.Identity.Name == viewModel.SellerUsername;
             
             return View("Details", viewModel);
         }

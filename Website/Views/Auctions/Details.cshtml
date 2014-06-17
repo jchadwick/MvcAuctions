@@ -13,17 +13,17 @@
 
 
 <div id="auction-info" class="row-fluid">
-    
+
     <div id="images" class="span4">
         <img class="img-polaroid" src="@Model.ImageUrl" />
     </div>
-    
+
     <div class="span8">
-        
+
         <h3 id="auction-title">@Model.Title</h3>
-        
+
         <div id="auction-details" class="row-fluid">
-            
+
             <div class="span8">
                 <p class="clearfix">
                     <label class="span3 muted">Condition:</label>
@@ -35,7 +35,7 @@
                     <span class="ends-in">@Model.EndsIn</span>
                     <small class="muted">(@Model.EndTime)</small>
                 </p>
-            
+
                 <p class="clearfix">
                     <label class="span3 muted">Seller:</label>
                     <span>@Html.ActionLink(Model.SellerUsername ?? " ", "Seller", "Auctions", new { id = Model.Id }, null)</span>
@@ -50,19 +50,21 @@
                         <span class="current-price">@Model.CurrentPriceDisplay</span>
                         <span class="pull-right">[@Html.ActionLink("Bid History", "History", "Auctions", new { id = Model.Id }, null)]</span>
                     </p>
-                    
 
-                    @using (Html.BeginForm("Bid", "Auctions", new { id = Model.Id }, FormMethod.Post))
+                    @if (!Model.SellerIsCurrentUser)
                     {
-                    <p class="clearfix">
-                        <label class="span2 muted">&nbsp;</label>
-                        <span class="input-prepend span4">
-                            <span class="add-on">$</span>
-                            <input name="amount" type="text" required="true" class="input-mini" value="@Model.MinimumBidDisplay">
-                        </span>
-                        <input type="submit" value="Place Bid" class="btn btn-primary"/>
-                    </p>
-                }
+                        using (Html.BeginForm("Bid", "Auctions", new { id = Model.Id }, FormMethod.Post))
+                        {
+                            <p class="clearfix">
+                                <label class="span2 muted">&nbsp;</label>
+                                <span class="input-prepend span4">
+                                    <span class="add-on">$</span>
+                                    <input name="amount" type="text" required="true" class="input-mini" value="@Model.MinimumBidDisplay">
+                                </span>
+                                <input type="submit" value="Place Bid" class="btn btn-primary" />
+                            </p>
+                        }
+                    }
                 </div>
             </div>
 
@@ -82,9 +84,9 @@
 
 <div class="row-fluid">
     <ul class="nav nav-tabs">
-    <li class="active">
-        <a href="#"><strong>Description</strong></a>
-    </li>
+        <li class="active">
+            <a href="#"><strong>Description</strong></a>
+        </li>
     </ul>
     <section id="description">
         @Model.Description
