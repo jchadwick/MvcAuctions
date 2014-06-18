@@ -9,17 +9,17 @@
             </a>
             <a class="brand" href="@Url.Content("~/")">MVC Auctions</a>
             <div class="nav-collapse collapse">
-                <ul class="nav">
+                <ul class="nav categories">
                     @foreach (Category category in ViewBag.Categories)
                     {
-                        <li>@Html.CategoryLink(category)</li>
+                        <li class="category">@Html.CategoryLink(category)</li>
                     }
                 </ul>
             </div>
             <div class="pull-right">
                 <ul class="nav">
                     <li>
-                        <a href="@Url.Action("Sell", "SellAnItem")">
+                        <a id="sell-item" href="@Url.Action("Sell", "SellAnItem", null)">
                             <i class="icon-share"></i>
                             Sell item
                         </a>
@@ -27,7 +27,7 @@
                     <li>
                         @if (!User.Identity.IsAuthenticated)
                         {
-                            @Html.ActionLink("Sign in", "Login", "Account")
+                            @Html.ActionLink("Sign in", "Login", "Account", null, new { id = "login" })
                         }
                         else
                         {
@@ -37,7 +37,7 @@
                                     @Html.AntiForgeryToken()
                                     <i class=" icon-user"></i>
                                     <span id="current-user">@User.Identity.Name</span>
-                                    <input type="submit" value="[logout]" style="display: inline; background:none; border-width:0px; color:blue; text-decoration:underline;" />
+                                    <input id="logout" type="submit" value="[logout]" style="display: inline; background:none; border-width:0px; color:blue; text-decoration:underline;" />
                                 }
                             </div>
                         }
