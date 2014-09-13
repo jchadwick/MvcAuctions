@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Common.Util
 {
-    public class ImageRepository
+    public class ImageRepository : IImageRepository
     {
         public string BaseUrl { get; set; }
         public string ImagesFolder { get; set; }

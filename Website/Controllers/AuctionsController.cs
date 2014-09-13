@@ -18,9 +18,16 @@ namespace Website.Controllers
             _repository = repository;
         }
 
+        protected internal string CurrentUsername
+        {
+            get { return _currentUsername ?? User.Identity.Name; }
+            set { _currentUsername = value; }
+        }
+        private string _currentUsername;
+
         [Authorize]
         [HttpPost, Route("auctions/{id}/bids")]
-        public ActionResult Bid(int id, decimal amount)
+        public ActionResult Bid(long id, decimal amount)
         {
             var auction = _repository.Find(id);
 
@@ -36,7 +43,7 @@ namespace Website.Controllers
                 return RedirectToAction("Details", new { id = auction.Id });
             }
 
-            auction.PlaceBid(User.Identity.Name, amount);
+            auction.PlaceBid(CurrentUsername, amount);
             _repository.SaveChanges();
 
             TempData.SuccessMessage(
