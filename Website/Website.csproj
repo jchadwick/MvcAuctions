@@ -260,6 +260,7 @@
     <Content Include="Scripts\search.coffee" />
     <Content Include="Views\Auctions\Auctions.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Homepage\MobileHomepage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
