@@ -7,9 +7,9 @@ namespace Website.Controllers
     public class HomepageController : Controller
     {
         [Route("")]
-        public ActionResult Homepage(string option = null)
+        public ActionResult Homepage(bool isMobile = false)
         {
-            if (option == "mobile")
+            if (isMobile)
                 return View("MobileHomepage");
 
             return View("Homepage");
