@@ -47,9 +47,9 @@ window.SearchViewModel = SearchViewModel
 
 # Initialize autocomplete    
 $ =>
-    $('#search .search-query').data('source',
+    $('.search-query').data('source',
         (query, callback) =>
-            category = $('#search [name=category]').val();
+            category = $('.form-search [name=category]').val();
             $.getJSON '/autocomplete', 
                 { query: query, category: category },
                 callback

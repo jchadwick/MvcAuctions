@@ -54,9 +54,9 @@
   window.SearchViewModel = SearchViewModel;
 
   $(function() {
-    return $('#search .search-query').data('source', function(query, callback) {
+    return $('.search-query').data('source', function(query, callback) {
       var category;
-      category = $('#search [name=category]').val();
+      category = $('.form-search [name=category]').val();
       return $.getJSON('/autocomplete', {
         query: query,
         category: category
